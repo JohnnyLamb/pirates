@@ -30,6 +30,7 @@
             <li ng-if="!isAuthenticated()"><a href="#/signup">Signup</a></li>
             <li ng-if="isAuthenticated()"><a ng-click="logout()" href="">Logout</a></li>
             <li ng-if="isAuthenticated()"><a href='#/edit'>Edit Profile</a></li>
+             <li ng-if="isAuthenticated()"><a href='#/ship'>You Ships</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -58,7 +59,8 @@
   <script type="text/javascript" src="controllers/navbar.js"></script>
   <script type="text/javascript" src="controllers/login.js"></script>
   <script type="text/javascript" src="controllers/signup.js"></script>
-   <script type="text/javascript" src="controllers/edit.js"></script>
+   <script type="text/javascript" src="controllers/profile.js"></script>
+    <script type="text/javascript" src="controllers/ship.js"></script>
 
 </body>
 </html>

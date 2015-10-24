@@ -4,6 +4,10 @@ var bcrypt = require('bcryptjs');
 
 var config = require('../_config');
 
+// var Ship = new Schema({
+//   name:String
+// });
+
 
 var User = new Schema({
   email: {
@@ -11,10 +15,15 @@ var User = new Schema({
     unique: true,
     lowercase: true
   },
+  username:{
+    type:String,
+    lowercase: true
+  },
   password: {
     type: String,
     select: false
-  }
+  },
+  ships:[]
 });
 
 // hash before saving to database

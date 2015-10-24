@@ -60,6 +60,7 @@ router.post('/signup', function(req, res) {
     }
     var user = new User({
       email: req.body.email,
+      username:req.body.username,
       password: req.body.password
     });
     user.save(function() {
@@ -101,6 +102,29 @@ router.post('/login', function(req, res) {
   });
 });
 
+
+// *** edit route *** //
+router.put('/edit', ensureAuthenticated, function(req, res, next) {
+  User.findOne({
+    _id: req.body._id
+  }, function(err, user) {
+    if (!user) {
+      return res.status(401).send({
+        message: {
+          email: 'Incorrect email'
+        }
+      });
+    }
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    user.username = req.body.username;
+    user.email = req.body.email;
+    user.save(function() {
+      res.send(user);
+    });
+  });
+});
 
 
 // PUT/UPDATE SINGLE USER

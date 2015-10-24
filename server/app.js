@@ -13,7 +13,7 @@ var config = require('./_config');
 // *** routes *** //
 var routes = require('./routes/index');
 var authRoutes = require('./routes/auth');
-
+var ships = require('./routes/ships');
 // *** express instance *** //
 var app = express();
 
@@ -36,6 +36,7 @@ mongoose.connect(config.MONGO_URI);
 
 // *** main routes *** //
 app.use('/auth',authRoutes);
+app.use('/pirate',ships);
 app.use('/', routes);
 
 
@@ -61,7 +62,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json('error', {
       message: err.message,
       error: err
     });
@@ -72,7 +73,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json('error', {
     message: err.message,
     error: {}
   });

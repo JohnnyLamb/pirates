@@ -26,8 +26,13 @@ app.config(function($routeProvider, $authProvider, $locationProvider) {
       controller: 'signupCtrl'
     })
      .when('/edit', {
-      templateUrl: 'partials/edit.html',
-      controller: 'editCtrl',
+      templateUrl: 'partials/profile.html',
+      controller: 'profileCtrl',
+
+    })
+     .when('/ship', {
+      templateUrl: 'partials/ships.html',
+      controller: 'shipCtrl',
 
     })
     .otherwise('/');

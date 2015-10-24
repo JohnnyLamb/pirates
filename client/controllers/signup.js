@@ -4,6 +4,7 @@ app.controller('signupCtrl', function($scope, $http, $auth, $location) {
 
     var user = {
       email: $scope.email,
+      username:$scope.username,
       password: $scope.password
     };
 
